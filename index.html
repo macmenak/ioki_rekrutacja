@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" ng-app="ioki" data-framework="angularjs">
+	<head>
+		<meta charset="utf-8">
+		<title>iOKI zadanie rekrutacyjne</title>
+		<link rel="stylesheet" href="css/main.css">
+		<script type="text/javascript" src="js/angular.min.js"></script>
+    	<script type="text/javascript" src="js/app.js"></script>
+		
+	</head>
+	<body ng-controller="exercisesController as app">
+		<!-- Okno aplikacji -->
+		<section id="application">
+			<!-- Okno obecnego zadania -->
+			<section id="currentExercise">
+				<!-- Nagłówek obecnego zadania czyli numer i tytuł zadania/działu oraz treść polecenia -->
+				<header id="exerciseHeader">
+					<h1 id="exerciseTitle">{{app.exercises[app.currentExercise].title}}</h1>
+					<h2 id="exerciseInstructions">{{app.exercises[app.currentExercise].instructions}}</h2>
+				</header>
+				<!-- Główna część zadania w której należy wpisać odpowiedzi -->
+				<div class="exerciseBody" ng-class="{'labelEx': app.exercises[app.currentExercise].type=='label', 'assignEx': app.exercises[app.currentExercise].type=='assign'}">
+					<div id="pictures" ng-show="app.exercises[app.currentExercise].type=='assign'" ng-repeat="picture in app.exercises[app.currentExercise].options">
+						<div class="pictureWrap picture{{$index+1}}">
+						<div class="pictureNumber">{{$index+1}}</div>
+						<img ng-src="img/pictures/{{picture.image}}"/>
+						</div>
+					</div>
+
+					<div id="options" ng-repeat="option in app.exercises[app.currentExercise].options" >
+						<div class="option" >
+							<img ng-show="app.exercises[app.currentExercise].type=='label'" ng-src="img/pictures/{{option.image}}"/><br/>
+							<div class="underImage" ng-class="{example: option.example}">
+								<span ng-show="option.example&&app.exercises[app.currentExercise].type=='label'">Example:</span><br>			
+								<span ng-show="app.exercises[app.currentExercise].type=='label'">{{$index+1}}</span><input class="answerField" type="text" ng-model="option.answer" ng-disabled="app.checkMode">
+								<div class="correctOrNot" ng-show="app.checkMode&&!option.example" ng-class="{'correct': option.answer==option.correctAns, 'wrong': option.answer!=option.correctAns}"></div>
+								<span ng-show="app.exercises[app.currentExercise].type=='assign'">{{option.label}}</span>
+
+							</div>
+						</div>
+
+					</div>
+					<div class="additional" ng-show="app.exercises[app.currentExercise].additional">
+							{{app.exercises[0].additional}}
+					</div>
+				</div>
+				<!-- Stały element - przycisk sprawdzenia poprawności rozwiązania -->
+				<div id="checkExercise" ng-click="app.checkAnswers()" ng-class="{checking: app.checkMode}"></div>
+				
+			</section>
+
+			<!-- Nawigacja pomiędzy zadaniami -->
+			<nav id="navigation">
+				<hr id="navLine" />
+				<div id="prevBtn" ng-show="app.currentExercise>0" class="btn active" ng-click="app.prevExersize()"></div>
+				<div id="nextBtn" ng-show="app.currentExercise<=app.exercises.length" class="btn active" ng-click="app.nextExersize()"></div>
+				<div id="prevBtn" ng-hide="app.currentExercise>0" class="btn" ></div>
+				<div id="nextBtn" ng-hide="app.currentExercise<app.exercises.length-1" class="btn" ></div>
+				<div id="navExercisesWrapper" >
+					
+					<div class="navExercise big ">2</div>
+					<div class="navExercise  "></div>
+					<div class="navExercise  "></div>
+					<div class="navExercise big active">3</div>
+					<div class="navExercise current active"></div>
+					<div class="navExercise  active"></div>
+					<div class="navExercise big ">4</div>
+					<div class="navExercise  "></div>
+					<div class="navExercise big ">5</div>
+					<div class="navExercise  "></div>
+					<div class="navExercise "></div>
+					
+				</div>
+			</nav>
+		</section>
+	</body>
+</html>

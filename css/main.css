@@ -1,0 +1,367 @@
+* {
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;  
+}
+
+
+body {
+	width: 968px;
+	margin: 0 auto;
+	font-family: Verdana;
+}
+
+#application{
+	margin: 5px 0;
+}
+
+#currentExercise {
+	position: relative;
+	padding: 10px 20px 0 20px;
+	width: 968px;
+	height: 534px;
+	background-color: #f5f5f5;
+}
+
+#exerciseTitle {
+	font-family: Verdana;
+	font-size: 24px;
+	font-weight: bold;
+	font-style: normal;
+	text-decoration: none;
+	color: #4654AB;
+	margin: 0;
+
+}
+
+#exerciseInstructions {
+
+	font-family: Verdana;
+	font-size: 18px;
+	font-weight: bold;
+	font-style: normal;
+	text-decoration: none;
+	color: #333333;
+	margin: 5px 0;
+
+}
+
+#checkExercise {
+	width:36px;
+	height:36px;
+	position: absolute;
+	right: 20px;
+	bottom: 20px;
+	background-color: #2f9ec8;
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	background-image: url("../img/icons/tick_white.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+#checkExercise.checking {
+	background-image: url("../img/icons/refresh_white.png");
+}
+
+#navigation {
+	position: relative;
+}
+
+#navLine {
+	margin: 40px 0;
+	height: 3px;	
+	background-color: #2f9ec8;
+	border: 0;
+}
+
+#prevBtn {
+	width:36px;
+	height:36px;
+	position: absolute;
+	left: 72px;
+	top: -18px;
+	background-color: #2f9ec8;
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	background-image: url("../img/icons/arrow_left_white.png");
+	background-position: 9px 10px;
+	background-repeat: no-repeat;
+}
+
+#nextBtn {
+	width:36px;
+	height:36px;
+	position: absolute;
+	left: 116px;
+	top: -18px;
+	background-color: #2f9ec8;
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	background-image: url("../img/icons/arrow_right_white.png");
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+
+
+.btn.active {
+	background-color: #4654AB !important;
+	cursor: pointer;
+}
+
+#navExercisesWrapper {
+	position: absolute;
+	top: -18px;
+	left: 210px;
+	
+}
+
+.navExercise {
+	position: relative;
+	float: left;
+	width: 16px;
+	height: 16px;
+	margin: 12px 40px 0 7px;
+	background-color: #fff;
+	border: 3px solid #2f9ec8;
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+}
+
+.navExercise:last-of-type{
+	margin-right: 0px;
+}
+
+.navExercise.big {
+	width: 30px;
+	height: 30px;
+	margin: 4px 40px 0 0;
+	text-align: center;
+	padding: 2px 0;
+	font-family: Verdana;
+	font-weight: bold;
+	color: #2f9ec8;
+}
+
+.navExercise.active{
+	border-color: #4654AB;
+	color: #4654AB;
+	
+}
+
+.navExercise.active.big::after{
+content: " ";
+background-color: #4654AB;
+height: 3px;
+width: 47px;
+display: block;
+margin-left: 27px;
+margin-top: -10px;
+}
+
+.navExercise.active.current::after{
+	content: " ";
+background-color: #4654AB;
+height: 3px;
+width: 47px;
+display: block;
+margin-left: 13px;
+margin-top: 42px;
+}
+
+.navExercise.active:not(.big):not(.current)::after{
+	content: " ";
+background-color: #4654AB;
+height: 3px;
+width: 47px;
+display: block;
+margin-left: 13px;
+margin-top: 3px;
+}
+
+.navExercise.current{
+	background-color: #4654AB;
+}
+.navExercise.current::before{
+	content: " ";
+	display: block;
+	margin: -30px -3px;
+	width: 16px;
+	height: 21px;
+	background-image: url("../img/icons/marker.png"); 
+}
+
+.labelEx.exerciseBody{
+	margin: 0 0 0 70px;
+}
+
+.assignEx.exerciseBody{
+	margin: 290px 0 0 70px;
+}
+
+.answerField:disabled{
+	background-color: #f5f5f5;
+}
+
+.labelEx .option{
+	float: left;
+	height: 170px;
+	margin: 0px 40px 35px 30px;
+}
+
+.assignEx .option{
+	float: left;
+	min-width: 242px;
+	margin: -10px 0 0 30px;
+}
+
+.labelEx .underImage {
+	padding: 5px;
+	font-size: 11px;
+	font-weight: bold;
+	margin-left: 21px;
+}
+
+.labelEx .answerField{
+	width: 75px;
+	height: 25px;
+	border: 1px solid #c9c9c9;
+	margin: 0 0 0 10px;
+	padding: 5px;
+}
+
+.assignEx .answerField{
+	width: 45px;
+	height: 25px;
+	border: 1px solid #c9c9c9;
+	margin: 0 0 0 10px;
+	padding: 5px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+
+
+.labelEx .example {
+	background-color:#e6eaee;
+	border: 1px solid #c7d6df;
+	
+
+}
+
+.additional {
+	clear: both;
+	text-align: center;
+	padding: 10px 20px;
+	background-color:#e6eaee;
+	border: 1px solid #c7d6df;
+	width: 700px;
+	height: 40px;
+	font-family: verdana;
+	font-size: 12px;
+	color: #647172;
+}
+
+.labelEx .correctOrNot {
+	width: 21px;
+	height: 20px;
+	display: inline-block;
+	margin-left: 5px;
+	position: absolute;
+}
+
+.assignEx .correctOrNot {
+	width: 21px;
+	height: 20px;
+	display: inline-block;
+	margin-left: -77px;
+	position: absolute;
+}
+
+
+
+.pictureNumber{
+	position: absolute;
+	left:0;
+	top: 0;
+	width: 20px;
+	height: 20px;
+	background-color: #fff;
+	text-align: center;
+}
+
+.pictureWrap {
+	float: left;
+	margin: 0;
+	box-sizing: content-box !important;
+	border: 4px solid #fff;
+	position: absolute;
+	-webkit-box-shadow: 2px 2px 18px 0px rgba(50, 50, 50, 1);
+	-moz-box-shadow:    2px 2px 18px 0px rgba(50, 50, 50, 1);
+	box-shadow:         2px 2px 18px 0px rgba(50, 50, 50, 1); 
+}
+
+.picture1 {
+	left: 224px;
+	top: 110px;
+	transform:rotate(-6deg); 
+	-webkit-transform:rotate(-6deg); 
+	-moz-transform:rotate(-6deg); 
+	-o-transform:rotate(-6deg);
+}
+
+.picture2 {
+	left: 381px;
+	top: 110px;
+	transform:rotate(6deg); 
+	-webkit-transform:rotate(6deg); 
+	-moz-transform:rotate(6deg); 
+	-o-transform:rotate(6deg);
+}
+
+.picture3 {
+	left: 551px;
+	top: 110px;
+	transform:rotate(-9deg); 
+	-webkit-transform:rotate(-9deg); 
+	-moz-transform:rotate(-9deg); 
+	-o-transform:rotate(-9deg);
+}
+
+.picture4 {
+	left: 224px;
+	top: 230px;
+	transform:rotate(3deg); 
+	-webkit-transform:rotate(3deg); 
+	-moz-transform:rotate(3deg); 
+	-o-transform:rotate(3deg);
+}
+
+.picture5 {
+	left: 385px;
+	top: 220px;
+	transform:rotate(-5deg); 
+	-webkit-transform:rotate(-5deg); 
+	-moz-transform:rotate(-5deg); 
+	-o-transform:rotate(-5deg);
+}
+
+.picture6 {
+	left: 555px;
+	top: 230px;
+	transform:rotate(5deg); 
+	-webkit-transform:rotate(5deg); 
+	-moz-transform:rotate(5deg); 
+	-o-transform:rotate(5deg);
+}
+
+.correctOrNot.correct{
+	background-image: url("../img/icons/correct.png");
+}
+
+.correctOrNot.wrong{
+	background-image: url("../img/icons/wrong.png");
+}
